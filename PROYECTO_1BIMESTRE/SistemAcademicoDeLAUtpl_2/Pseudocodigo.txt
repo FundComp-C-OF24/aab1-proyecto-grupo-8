@@ -1,0 +1,48 @@
+Inicio
+	//Declaracion de variables
+    Definir totalEstudiantes, estudiantesAprobados, estudiantesReprobados, cedula, notas, estudiante, materia como entero
+    Definir ACD, APE, AA, notaACD, notaAPE, notaAA, promedio, porcentaje Como Real
+    estudiante = 1
+    materia = Aleatorio(1,100)
+    Escribir "----------------GESTION DE CALIFICACIONES UTPL----------------"
+    Repetir
+		cedula = Aleatorio(1100000000 , 100000000)
+        ACD = Aleatorio(0,10)
+        APE = Aleatorio(0,10)
+        AA = Aleatorio(0,10)
+        notaACD = (ACD * (3.5 / 10))
+        notaAPE = (APE * (3.5 / 10))
+        notaAA = (AA * (3 /10))
+        promedio = (notaACD + notaAPE + notaAA)
+        escribir "---------RESULTADOS---------"
+        Escribir "Nombre: Estudiante ", estudiante
+        Escribir "Cedula: ", cedula
+        Escribir "Materia: Materia ", materia
+        Escribir "Nota ACD (3,5/10): ", notaACD
+        Escribir "Nota APE (3,5/10): ", notaAPE
+        Escribir "Nota AA (3/10): ", notaAA
+        Escribir "PROMEDIO: ", promedio 
+        Escribir "====================================================="
+        Si (promedio >= 7.0) Entonces
+            Escribir "El estudiante ha APROBADO la materia"
+            estudiantesAprobados = estudiantesAprobados + 1
+        Sino
+            Escribir "El estudiante debe rendir EXAMEN DE RECUPERACIÓN"
+            estudiantesReprobados = estudiantesReprobados + 1
+        FinSi
+        Escribir "===================================================="
+        Escribir "Desea escribir otro estudiante? (Si/No)"
+        Leer deseaIngresarMas
+        estudiante = estudiante + 1
+	Hasta Que (deseaIngresarMas = 'No' o deseaIngresarMas = 'no')
+	Escribir "========================================================"
+	Escribir "Estudiantes APROBADOS: " , estudiantesAprobados
+	Escribir "Estudiantes REPROBADOS: ", estudiantesReprobados
+	Escribir "========================================================"
+    porcentaje = estudiantesAprobados / estudiante * 100 
+	Escribir "Porcentaje de aprobacion: ", porcentaje, "%"
+	porcentaje = estudiantesReprobados / estudiante * 100 
+	Escribir "Porcentaje de reprobacion: ", porcentaje, "%"
+
+Fin
+

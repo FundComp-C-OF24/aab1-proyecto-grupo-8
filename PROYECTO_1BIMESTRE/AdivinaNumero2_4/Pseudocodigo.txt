@@ -1,0 +1,79 @@
+Inicio
+    Definir numAdivinar, numIngresado, intentosUsados, intentos, pistaAleatoria Como Entero
+    Definir tecla, quierePista Como Caracter
+    numAdivinar = Aleatorio(1, 100)
+    intentosUsados = 0
+    intentos = 10
+    Escribir "BIENVENIDO A ADIVINAR EL NUMERO 2.0"
+    Escribir "INSTRUCCIONES:"
+    Escribir "1. El rango del numero que debes adivinar esta entre el 1 y el 100"
+    Escribir "2. Tienes tan solo 10 intentos para adivinar"
+    Escribir "3. Tendras la oportunidad de pedir pistas pero esto te restara un intento"
+    Escribir "4. El numero a adivinar es un entero"
+    Escribir "5. Si decides pedir una pista aleatoriamente se te dira una caracteristica del numero entre las pistas estaran"
+    Escribir "   5.1 Si es mayor"
+    Escribir "   5.2 Si es menor es par"
+    Escribir "   5.2 impar"
+    Escribir "   5.3 es primo"
+    Escribir "   5.5 pertenece a la serie fibonacci"
+    Escribir "   5.5 es multiplo de 5"
+    Escribir "   5.6 es multiplo de 3"
+    Escribir "Empecemos con el juego, te deseo suerte =D"
+    Escribir "------------------------------------------"
+	
+    Mientras intentos > 0 Hacer
+        Escribir "Te quedan ", intentos, " intentos."
+        Escribir "------> Adivina el numero: "
+        Leer numIngresado
+        intentosUsados = intentosUsados + 1
+		
+        Si numIngresado = numAdivinar Entonces
+            Escribir "FELICIDADES, has adivinado el numero en ", intentosUsados, " intentos"
+			// Termina el juego si el número es adivinado
+		Sino
+			Escribir "Numero equivocado, deseas una pista? (Si/No): "
+			Leer quierePista
+			
+			Si quierePista = "Si" Entonces
+				Escribir "Se te resta un intento por pedir pista"
+				intentos = intentos - 1
+				pistaAleatoria = Aleatorio(1, 8)
+				
+				Si numAdivinar > numIngresado Y pistaAleatoria == 1 Entonces
+					Escribir "PISTA: Intenta con un numero mayor.   <---"
+				FinSi
+				Si numAdivinar < numIngresado Y pistaAleatoria == 2 Entonces
+					Escribir "PISTA: Intenta con un numero menor.   <---"
+				FinSi
+				Si numAdivinar MOD 2 = 0 Y pistaAleatoria == 3 Entonces
+					Escribir "PISTA: El numero es par.   <---"
+				FinSi
+				Si numAdivinar MOD 2 <> 0 Y pistaAleatoria == 4 Entonces
+					Escribir "PISTA: El numero es impar.   <---"
+				FinSi
+				Si (numAdivinar == 1 O numAdivinar == 2 O numAdivinar == 3 O numAdivinar == 5 O numAdivinar == 8 O numAdivinar == 13 O numAdivinar == 21 O numAdivinar == 34 O numAdivinar == 55 O numAdivinar == 89) Y pistaAleatoria == 5 Entonces
+					Escribir "PISTA: El numero pertenece a la secuencia fibonacci   <---"
+				FinSi
+				Si numAdivinar MOD 5 = 0 Y pistaAleatoria == 6 Entonces
+					Escribir "PISTA: El numero es multiplo de 5  <---"
+				FinSi
+				Si numAdivinar MOD 3 = 0 Y pistaAleatoria == 7 Entonces
+					Escribir "PISTA: El numero es multiplo de 3  <---"
+				FinSi
+				Si No (numAdivinar > numIngresado O numAdivinar < numIngresado O numAdivinar MOD 2 = 0 O numAdivinar MOD 2 <> 0 O (numAdivinar <> 1 Y numAdivinar <> 2 Y numAdivinar <> 3 Y numAdivinar <> 5 Y numAdivinar <> 8 Y numAdivinar <> 13 Y numAdivinar <> 21 Y numAdivinar <> 34 Y numAdivinar <> 55 Y numAdivinar <> 89) O numAdivinar MOD 5 <> 0 O numAdivinar MOD 3 <> 0) Entonces
+					Escribir "Elige cuidadosamente el proximo numero"
+					intentos = intentos - 1
+				FinSi
+			Sino quierePista = "No"
+				Escribir "Elige cuidadosamente el proximo numero"
+				// No se descuenta ningún intento si el jugador no quiere una pista
+			FinSi
+		FinSi
+	FinMientras
+	Si intentos = 0 Entonces
+		Escribir "Lo siento, has agotado tus intentos.El numero era: ", numAdivinar
+	FinSi
+Fin
+
+
+
